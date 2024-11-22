@@ -1,17 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/native-stack';
+import { StyleSheet, Text, View , Button, SafeAreaView} from 'react-native';
 
-
-const WorkoutsPage = () => {
+const WorkoutsPage = ({navigation}) => {
     return (
         <SafeAreaView>
-            <Text>Musclegroup</Text>
             <Button
-                title="Go to Preview"
-                onPress={() => navigation.push('Preview')}
+                title="Go to Home"
+                onPress={() => navigation.push('Home')}
             />
         </SafeAreaView>
     );

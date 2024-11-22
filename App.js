@@ -3,12 +3,12 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import WorkoutsPage from './components/screens/WorkoutsPage';
-import HomePage from './components/screens/HomePage';
-import InstructionsPage from './components/screens/InstructionsPage';
-import ProgressPage from './components/screens/ProgressPage';
-import WorkoutPage from './components/screens/WorkoutPage';
-import WorkoutPreviewPage from './components/screens/WorkoutPreviewPage';
+import WorkoutsPage from './screens/WorkoutsPage';
+import HomePage from './screens/HomePage';
+import InstructionsPage from './screens/InstructionsPage';
+import ProgressPage from './screens/ProgressPage';
+import WorkoutPage from './screens/WorkoutPage';
+import WorkoutPreviewPage from './screens/WorkoutPreviewPage';
 import "./global.css"
 
 export default function App() {

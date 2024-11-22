@@ -1,16 +1,22 @@
 import React from "react";
-import {Text, View} from 'react-native';
-import {NativeWindStyleSheet} from 'react-native';
+import {Text, View, SafeAreaView, Button} from 'react-native';
 
-const HomePage = () => {
+
+const HomePage = ({navigation}) => {
     return (
-        <NativeWindStyleSheet>
-            <SafeAreaView  className=" ">
-                <Text>
-                    Hello, NativeWind!
-                </Text>
+            <SafeAreaView>
+                <Button
+                title="Workouts"
+                onPress={() => navigation.push('Workouts')}/>
+                <Button
+                title="Progress"
+                onPress={() => navigation.push('Progress')}/>
+                <Button
+                title="Instructions"
+                onPress={() => navigation.push('Instructions')}/>
+               
+                
             </SafeAreaView>
-        </NativeWindStyleSheet>
 
     );
 };

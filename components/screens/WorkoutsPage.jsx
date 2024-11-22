@@ -1,8 +1,7 @@
-import React from "react";
-import {Text, View, SafeAreaView, Button} from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View , Button, SafeAreaView} from 'react-native';
 
-
-const InstructionsPage = ({navigation}) => {
+const WorkoutsPage = ({navigation}) => {
     return (
         <SafeAreaView>
             <Button
@@ -13,4 +12,4 @@ const InstructionsPage = ({navigation}) => {
     );
 };
 
-export default InstructionsPage;
+export default WorkoutsPage;

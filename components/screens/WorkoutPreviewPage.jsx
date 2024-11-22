@@ -2,7 +2,7 @@ import React from "react";
 import {Text, View, SafeAreaView, Button} from 'react-native';
 
 
-const InstructionsPage = ({navigation}) => {
+const WorkoutPreviewPage = ({navigation}) => {
     return (
         <SafeAreaView>
             <Button
@@ -13,4 +13,4 @@ const InstructionsPage = ({navigation}) => {
     );
 };
 
-export default InstructionsPage;
+export default WorkoutPreviewPage;

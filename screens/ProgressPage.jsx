@@ -1,16 +1,44 @@
 import React from "react";
-import {Text, View, SafeAreaView, Button} from 'react-native';
-
+import { Text, View, SafeAreaView, StyleSheet, TouchableOpacity} from 'react-native';
+import Streak from "../components/Streak";
 
 const ProgressPage = ({navigation}) => {
-    return (
-        <SafeAreaView>
-            <Button
-                title="Go to Home"
-                onPress={() => navigation.push('Home')}
-            />
+   return (
+        <SafeAreaView style={styles.container}>
+            <Streak></Streak>
+            <View style={styles.footer}>
+                    <TouchableOpacity style={styles.buttonX} onPress={() => navigation.push('Home')}>
+                        <Text style={styles.textX}>GO BACK</Text>
+                    </TouchableOpacity>
+            </View>
         </SafeAreaView>
     );
 };
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: "space-between",
+        backgroundColor: "#f5f5f5"
+    },
+    buttonX: {
+        backgroundColor: '#ffcc00',
+        padding: 15,
+        borderRadius: 10,
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '90%',
+        marginBottom: 20,
+    },
+    textX: {
+        color: "#000",
+        fontWeight: "bold",
+        fontSize: 16,
+    },
+    footer: {
+        width: "100%",
+        alignItems: "center",
+    },
+});
 
 export default ProgressPage;

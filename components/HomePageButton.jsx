@@ -4,7 +4,7 @@ import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 const HomePageButton = ({ title, onPress, backgroundColor }) => {
   return (
     <TouchableOpacity
-      style={[styles.button, { backgroundColor }]} // Allows dynamic background color
+      style={[styles.button, { backgroundColor }]}
       onPress={onPress}
     >
       <Text style={styles.buttonText}>{title}</Text>

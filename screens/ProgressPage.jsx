@@ -1,13 +1,14 @@
 import React from "react";
 import { Text, View, SafeAreaView, StyleSheet, TouchableOpacity} from 'react-native';
-import Streak from "../components/Streak";
+import Progress from "../components/Progress";
+
 
 const ProgressPage = ({navigation}) => {
    return (
         <SafeAreaView style={styles.container}>
-            <Streak></Streak>
+            <Progress></Progress>
             <View style={styles.footer}>
-                    <TouchableOpacity style={styles.buttonX} onPress={() => navigation.push('Home')}>
+                    <TouchableOpacity style={styles.buttonX} onPress={() => navigation.pop()}>
                         <Text style={styles.textX}>GO BACK</Text>
                     </TouchableOpacity>
             </View>

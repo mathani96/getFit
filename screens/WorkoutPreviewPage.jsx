@@ -2,16 +2,16 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View , Button, SafeAreaView} from 'react-native';
 import WorkoutButton from '../components/WorkoutButton';
 import ExercisePreview from '../components/ExercisePreview';
+import CustomButton from '../components/CustomButton';
 
 const WorkoutPreviewPage = ({ navigation, route}) => {
 
-    const { workout } = route.params;
+    const { workoutName } = route.params;
 
     return (
-        <SafeAreaView style={styles.safeArea}>
+        <SafeAreaView style={styles.container}>
             <View style={styles.body}>
-                <Text style={styles.text}>{workout} Workout</Text>
-                <Text style={styles.text}>MUSTAARRRDDDDDD</Text>
+                <Text style={styles.textX}>{workoutName} Workout</Text>
             </View>
             <View style={styles.body}>
                 
@@ -27,33 +27,32 @@ const WorkoutPreviewPage = ({ navigation, route}) => {
                 
             </View>
 
-            <Button 
-            title='Start'
-            onPress={() => navigation.push('Workout', {workout: workout})}
-            ></Button>
+            <CustomButton 
+                buttonName='Start'
+                onPress={() => navigation.navigate("Workout",workoutName)}
+            ></CustomButton>
              
         </SafeAreaView>
     );
 };
 
 const styles = StyleSheet.create({
-    safeArea : {
-        backgroundColor: '#A9A9A9',
+    container : {
+        backgroundColor: "#f5f5f5",
         alignItems: 'center',
         justifyContent: 'center',
         height: '100%',
         width: '100%',
-        marginVertical: 10,
     },
     body: {
         justifyContent: 'center',
         alignItems: 'center',
         width:'100%'
     },
-    text: {
-        fontSize: 30,
+    textX: {
+        fontSize: 20,
         fontWeight: 'bold',
-        color: 'black',
+        color: '#000',
     }
 });
 

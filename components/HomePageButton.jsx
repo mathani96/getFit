@@ -1,32 +1,32 @@
 import React from 'react';
 import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 
-const HomePageButton = ({ title, onPress, backgroundColor }) => {
+const HomePageButton = ({ title, onPress }) => {
   return (
     <TouchableOpacity
-      style={[styles.button, { backgroundColor }]}
+      style={[styles.buttonX]}
       onPress={onPress}
     >
-      <Text style={styles.buttonText}>{title}</Text>
+      <Text style={styles.textX}>{title}</Text>
     </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
-  button: {
-    padding: 12,
-    borderRadius: 8,
-    borderColor: 'black',
-    borderWidth: 5,
-    alignItems: 'center',
+  
+  buttonX: {
+    backgroundColor: '#ffcc00',
+    padding: 15,
+    borderRadius: 10,
     justifyContent: 'center',
-    width: '80%', // Adjust width as needed
-    marginVertical: 8, // Space between buttons
+    alignItems: 'center',
+    width: '90%',
+    marginBottom: 20,
   },
-  buttonText: {
-    color: '#fff',
-    fontSize: 25,
-    fontWeight: 'bold',
+  textX: {
+    color: "#000",
+    fontWeight: "bold",
+    fontSize: 20,
   },
 });
 

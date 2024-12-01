@@ -9,7 +9,6 @@ import InstructionsPage from './screens/InstructionsPage';
 import ProgressPage from './screens/ProgressPage';
 import WorkoutPage from './screens/WorkoutPage';
 import WorkoutPreviewPage from './screens/WorkoutPreviewPage';
-import "./global.css"
 
 export default function App() {
 

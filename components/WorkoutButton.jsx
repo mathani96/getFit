@@ -2,10 +2,10 @@ import React from 'react';
 import {Image, Text, TouchableOpacity, StyleSheet, View } from 'react-native';
 import WorkoutImages from '../WorkoutImages';
 
-const WorkoutButton = ({ title, onPress, backgroundColor, workout }) => {
+const WorkoutButton = ({ title, onPress, workoutName }) => {
 
-    const getImageSource = (workout) => {
-        const imageSource = WorkoutImages.workoutCategories[workout];
+    const getImageSource = (workoutName) => {
+        const imageSource = WorkoutImages.workoutCategories[workoutName];
         if (imageSource) {
           return imageSource;
         } else {
@@ -14,16 +14,16 @@ const WorkoutButton = ({ title, onPress, backgroundColor, workout }) => {
         }
       };
     
-      const imageSource = getImageSource(workout);
+      const imageSource = getImageSource(workoutName);
 
   return (
     <TouchableOpacity
-      style={[styles.button, { backgroundColor }]} 
+      style={[styles.buttonX]} 
       onPress={onPress}
     >
       <View style={styles.body}>
       {/* Text on the left */}
-      <Text style={styles.buttonText}>{title}</Text>
+      <Text style={styles.textX}>{title}</Text>
       {/* Image on the right */}
       {imageSource && <Image source={imageSource} style={styles.image} />}
     </View>
@@ -34,25 +34,17 @@ const WorkoutButton = ({ title, onPress, backgroundColor, workout }) => {
 
 
 const styles = StyleSheet.create({
-  button: {
-    padding: 12,
-    borderRadius: 8,
-    borderColor: 'black',
-    borderWidth: 5,
-    alignItems: 'center',
-    width: '80%',
-    marginVertical: 8, 
-  },
+  
   body: {
     flexDirection: 'row', 
     alignItems: 'center', 
     justifyContent: 'space-between',
     width: '100%',
   },
-  buttonText: {
-    color: '#fff',
-    fontSize: 25,
-    fontWeight: 'bold',
+  textX: {
+    color: "#000",
+    fontWeight: "bold",
+    fontSize: 20,
   },
   image: {
     width: 100,
@@ -60,6 +52,16 @@ const styles = StyleSheet.create({
     aspectRatio: 1,
     borderRadius: 5,
   },
+    buttonX: {
+        backgroundColor: '#ffcc00',
+        padding: 15,
+        borderRadius: 10,
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '90%',
+        marginBottom: 20,
+    },
+    
 });
 
 export default WorkoutButton;

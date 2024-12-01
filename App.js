@@ -9,7 +9,7 @@ import InstructionsPage from './screens/InstructionsPage';
 import ProgressPage from './screens/ProgressPage';
 import WorkoutPage from './screens/WorkoutPage';
 import WorkoutPreviewPage from './screens/WorkoutPreviewPage';
-import "./global.css"
+import StreakPage from './components/Streak';
 
 export default function App() {
 
@@ -17,7 +17,7 @@ export default function App() {
 
   return (
 
-      <NavigationContainer>
+      <NavigationContainer >
         <Stack.Navigator initialRouteName="Home">
           <Stack.Screen name="Home" component={HomePage}/>
           <Stack.Screen name="Workouts" component={WorkoutsPage}/>
@@ -29,13 +29,6 @@ export default function App() {
       </NavigationContainer>
     
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+

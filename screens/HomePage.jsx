@@ -1,11 +1,11 @@
 import React from "react";
-import {Text, View, SafeAreaView, Button} from 'react-native';
+import {Text, View, SafeAreaView, Button, StyleSheet} from 'react-native';
 
 
 const HomePage = ({navigation}) => {
     return (
-            <SafeAreaView>
-                <Button
+            <SafeAreaView style={styles.containerView}>
+                <Button 
                 title="Workouts"
                 onPress={() => navigation.push('Workouts')}/>
                 <Button
@@ -20,5 +20,15 @@ const HomePage = ({navigation}) => {
 
     );
 };
+
+const styles = StyleSheet.create({
+    containerView: {
+        flex:1,
+        flexDirection: 'column', 
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        width:'100%',
+    },
+})
 
 export default HomePage;

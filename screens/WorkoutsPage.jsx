@@ -1,42 +1,47 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View , Button, SafeAreaView} from 'react-native';
+import { StyleSheet, Text, View , SafeAreaView} from 'react-native';
 import WorkoutButton from '../components/WorkoutButton';
+import CustomButton from '../components/CustomButton';
 
 
 const WorkoutsPage = ({navigation}) => {
     return (
-        <SafeAreaView style={styles.safeArea}>
-            <View style={styles.body}>
-                <Text style={styles.text}>Choose your Workout</Text>
+        <SafeAreaView style={styles.container}>
+            <View >
+                <Text style={styles.textX}>Choose your Workout</Text>
             </View>
-            <View style={styles.body}>
+            <View >
                 <WorkoutButton
                     title="Legs/Glutes"
-                    onPress={() => navigation.push('Preview', {workout: 'legs'})}
-                    workout="legs"
+                    onPress={() => navigation.navigate('Preview', {workoutName: 'legs'})}
+                    workoutName="legs"
                 />
             </View>
-            <View style={styles.body}>
+            <View >
                 <WorkoutButton
                     title="Chest/Triceps"
-                    onPress={() => navigation.push('Preview', {workout: 'chest'})}
-                    workout="chest"
+                    onPress={() => navigation.navigate('Preview', {workoutName: 'chest'})}
+                    workoutName="chest"
                 />
             </View>
-            <View style={styles.body}>
+            <View >
                 <WorkoutButton
                     title="Back/Biceps"
-                    onPress={() => navigation.push('Preview', {workout: 'back'})}
-                    workout="back"
+                    onPress={() => navigation.navigate('Preview', {workoutName: 'back'})}
+                    workoutName="back"
                 />
             </View>
         
-            <View style={styles.body}>
+            <View >
                 <WorkoutButton
                     title="Core/Abs"
-                    onPress={() => navigation.push('Preview', {workout: 'abs'})}
-                    workout="abs"
+                    onPress={() => navigation.navigate('Preview', {workoutName: 'abs'})}
+                    workoutName="abs"
                 />
+            </View>
+
+            <View style={styles.button}>
+                    <CustomButton buttonName="Back to Home" onPress={() => navigation.popToTop()} />
             </View>
              
         </SafeAreaView>
@@ -44,24 +49,23 @@ const WorkoutsPage = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
-    safeArea : {
-        backgroundColor: '#A9A9A9',
+    container : {
+        backgroundColor: '#f5f5f5',
         alignItems: 'center',
         justifyContent: 'center',
         height: '100%',
         width: '100%',
-        marginVertical: 10,
     },
-    body: {
-        justifyContent: 'center',
+    textX: {
+        color: "#000",
+        fontWeight: "bold",
+        fontSize: 20,
+    },
+    button: {
+        width: '100%',
         alignItems: 'center',
-        width:'100%'
+        justifyContent: 'center',
     },
-    text: {
-        fontSize: 30,
-        fontWeight: 'bold',
-        color: 'black',
-    }
 });
 
 export default WorkoutsPage;

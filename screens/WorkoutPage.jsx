@@ -2,13 +2,13 @@ import React from "react";
 import {Text, View, SafeAreaView, Button} from 'react-native';
 
 
-const WorkoutPage = ({navigation}) => {
+const WorkoutPage = ({navigation, route}) => {
+
+    const { workout } = route.params;
+
     return (
         <SafeAreaView>
-            <Button
-                title="Go to Home"
-                onPress={() => navigation.push('Home')}
-            />
+            <Text>{workout}</Text>
         </SafeAreaView>
     );
 };

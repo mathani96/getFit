@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View , Button, SafeAreaView} from 'react-native';
 import WorkoutButton from '../components/WorkoutButton';
 
+
 const WorkoutsPage = ({navigation}) => {
     return (
         <SafeAreaView style={styles.safeArea}>
@@ -10,30 +11,30 @@ const WorkoutsPage = ({navigation}) => {
             </View>
             <View style={styles.body}>
                 <WorkoutButton
-                    title="Legs"
-                    onPress={() => navigation.push('Workout')}
+                    title="Legs/Glutes"
+                    onPress={() => navigation.push('Preview', {workout: 'legs'})}
                     workout="legs"
                 />
             </View>
             <View style={styles.body}>
                 <WorkoutButton
                     title="Chest/Triceps"
-                    onPress={() => navigation.push('Workout')}
+                    onPress={() => navigation.push('Preview', {workout: 'chest'})}
                     workout="chest"
                 />
             </View>
             <View style={styles.body}>
                 <WorkoutButton
                     title="Back/Biceps"
-                    onPress={() => navigation.push('Workout')}
+                    onPress={() => navigation.push('Preview', {workout: 'back'})}
                     workout="back"
                 />
             </View>
         
             <View style={styles.body}>
                 <WorkoutButton
-                    title="Abs"
-                    onPress={() => navigation.push('Workout')}
+                    title="Core/Abs"
+                    onPress={() => navigation.push('Preview', {workout: 'abs'})}
                     workout="abs"
                 />
             </View>

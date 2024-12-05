@@ -13,3 +13,6 @@ Our questions:
 
 5. Some parts are only place holder right now(contents in progress page, and progress bar in WorkoutPage).
 
+
+
+For us: ap icon in app.json // app icon path comes here

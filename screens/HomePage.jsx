@@ -19,7 +19,7 @@ const HomePage = ({navigation}) => {
                 <View style={styles.body}>
                     <HomePageButton 
                     title="Instructions"
-                    onPress={() => navigation.navigater('Instructions')}/>
+                    onPress={() => navigation.navigate('Instructions')}/>
                 </View>
             </SafeAreaView>
 

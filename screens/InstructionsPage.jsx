@@ -60,7 +60,7 @@ const InstructionsPage = ({ navigation }) => {
                 </Text>
             </View>
             <View style={styles.footer}>
-                <TouchableOpacity style={styles.buttonX} onPress={() => navigation.push("Home")}>
+                <TouchableOpacity style={styles.buttonX} onPress={() => navigation.popToTop()}>
                     <Text style={styles.textX}>GO TO HOME</Text>
                 </TouchableOpacity>
             </View>

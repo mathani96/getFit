@@ -1,13 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { Text, View, SafeAreaView, StyleSheet } from "react-native";
 import CustomButton from "../components/CustomButton";
+import Demonstration from "../components/Demonstration";
+import WorkoutImages from '../WorkoutImages';
 
 const WorkoutPage = ({ navigation, route, title}) => {
-    const { workoutName } = route.params;
+    const workoutName = route.params;
 
     // Timer state: starts at 1 minute (60 seconds)
-    const [timeLeft, setTimeLeft] = useState(5);
+    const [timeLeft, setTimeLeft] = useState(2);
     const [isPaused, setIsPaused] = useState(false);
+    const [currentExercise, setCurrentExercise] = useState(0);
+    const [action, setAction] = useState("ready");
+    const [currentDemo, setCurrentDemo] = useState(WorkoutImages.ready);
+
+    const exercises = WorkoutImages.exercises[workoutName];
 
     // Countdown logic using useEffect
     useEffect(() => {
@@ -16,8 +23,39 @@ const WorkoutPage = ({ navigation, route, title}) => {
                 setTimeLeft((prevTime) => prevTime - 1);
             }, 1000);
             return () => clearInterval(timer); // Cleanup the timer
+        } else if (timeLeft === 0){
+            if(action === "exercise"){
+                setTimeLeft(3);
+                setCurrentDemo(WorkoutImages.rest);
+                setAction("rest");
+                if(currentExercise === exercises.length){
+                    setAction("finished");
+                    setTimeLeft(0);
+                    setCurrentDemo(WorkoutImages.finish)
+                }
+                
+            }else if(action === "ready"){
+                setTimeLeft(5);
+                setCurrentExercise(0);
+                setCurrentDemo(exercises[currentExercise]);
+                setCurrentExercise((prevIndex) => (prevIndex + 1));
+                setAction("exercise");
+            } else if(action === "rest"){
+                setTimeLeft(5);
+                setCurrentExercise((prevIndex) => (prevIndex + 1));
+                setCurrentDemo(exercises[currentExercise]);
+                setAction("exercise");
+                
+            }
+            
         }
     }, [timeLeft, isPaused]);
+
+    /*
+    if(currentExercise === exercises.length -1){
+                    setAction("finished");
+                }
+    */
 
     // Format time in MM:SS format
     const formatTime = (seconds) => {
@@ -36,7 +74,9 @@ const WorkoutPage = ({ navigation, route, title}) => {
                 
             </View>
 
-            <View style={styles.workoutDemo}></View>
+            <View style={styles.workoutDemo}>
+                <Demonstration exercisePath={currentDemo}></Demonstration>
+            </View>
 
             <View style={styles.footer}>
                 <View style={styles.buttonPos}>

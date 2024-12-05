@@ -1,7 +1,8 @@
 const WorkoutImages = {
-  rest: require('./assets/workouts/rest.png'),
-  ready: require('./assets/workouts/ready.png'),
-  finish: require('./assets/workouts/finish.png'),
+  
+  rest: require('./assets/workouts/rest.mp4'),
+  ready: require('./assets/workouts/ready.mp4'),
+  finish: require('./assets/workouts/ready.mp4'),
 
   workoutCategories: {
       abs: require('./assets/muscleGroups/abs.png'),

@@ -1,14 +1,27 @@
-import React from "react";
-import { View, Text, StyleSheet, Image} from 'react-native';
+import React, {useEffect} from "react";
+import { View, StyleSheet} from 'react-native';
+
+import * as ExpoVideo from 'expo-video';
+const { useVideoPlayer, VideoView } = ExpoVideo;
+
+import { useEvent } from "expo";
 
 const Demonstration= ({exercisePath }) => {
+
+    const player = useVideoPlayer(exercisePath, player => {
+        player.loop = true;
+      });
+
+      // Start playing the video on mount
+        useEffect(() => {
+            player.play();
+        }, [player]);
 
 
     return(
         <View>
-            <Image
-                style={styles.gif}
-                source={exercisePath} // Path to your video file // Apply your custom styles here
+            <VideoView style={styles.gif}
+             player={player}         
             />
         </View>
 
@@ -19,7 +32,7 @@ const styles = StyleSheet.create({
     
     gif: {
         padding: 15,
-        width: '100%',
+        width: '90%',
         height: '80%',
         marginBottom: 20,
     },

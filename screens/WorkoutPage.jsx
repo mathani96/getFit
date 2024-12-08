@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Text, View, SafeAreaView, StyleSheet } from "react-native";
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import CustomButton from "../components/CustomButton";
 import Demonstration from "../components/Demonstration";
 import WorkoutImages from '../WorkoutImages';
+import ProgressService from "../assets/services/ProgressService";
 
 const WorkoutPage = ({ navigation, route, title}) => {
     const workoutName = route.params;
@@ -13,51 +15,66 @@ const WorkoutPage = ({ navigation, route, title}) => {
     const [currentExercise, setCurrentExercise] = useState(0);
     const [action, setAction] = useState("ready");
     const [currentDemo, setCurrentDemo] = useState(WorkoutImages.ready);
+    const [progress, setProgress] = useState(0);
+    const [prevProgress, setPrevProgress] = useState(0);
+    const [isLoaded, setIsLoaded] = useState(false);
 
     const exercises = WorkoutImages.exercises[workoutName];
 
-    // Countdown logic using useEffect
     useEffect(() => {
+        const loadProgress = async () => {
+           const savedProgress = await ProgressService.load(workoutName);
+           setPrevProgress(savedProgress || 0);
+           console.log('Laded saved progress : ', savedProgress);
+        };
+
+        loadProgress();
+       
+        return () => {
+            console.log("Page is being unloaded!");
+        };
+    }, []);
+
+    // Countdown logic
+    useEffect(() => {
+        if (!isLoaded) return; // Wait until progress is loaded
+
         if (timeLeft > 0 && !isPaused) {
             const timer = setInterval(() => {
                 setTimeLeft((prevTime) => prevTime - 1);
             }, 1000);
-            return () => clearInterval(timer); // Cleanup the timer
-        } else if (timeLeft === 0){
-            if(action === "exercise"){
+            return () => clearInterval(timer); // Cleanup
+        } else if (timeLeft === 0) {
+            if (action === "exercise") {
                 setTimeLeft(3);
                 setCurrentDemo(WorkoutImages.rest);
                 setAction("rest");
-                if(currentExercise === exercises.length){
+                if (currentExercise === exercises.length) {
                     setAction("finished");
                     setTimeLeft(0);
-                    setCurrentDemo(WorkoutImages.finish)
+                    setCurrentDemo(WorkoutImages.finish);
+                    setProgress(prevProgress + 1);
                 }
-                
-            }else if(action === "ready"){
+            } else if (action === "ready") {
                 setTimeLeft(5);
                 setCurrentExercise(0);
                 setCurrentDemo(exercises[currentExercise]);
-                setCurrentExercise((prevIndex) => (prevIndex + 1));
+                setCurrentExercise((prevIndex) => prevIndex + 1);
                 setAction("exercise");
-            } else if(action === "rest"){
+            } else if (action === "rest") {
                 setTimeLeft(5);
-                setCurrentExercise((prevIndex) => (prevIndex + 1));
+                setCurrentExercise((prevIndex) => prevIndex + 1);
                 setCurrentDemo(exercises[currentExercise]);
                 setAction("exercise");
-                
             }
-            
         }
-    }, [timeLeft, isPaused]);
+    }, [timeLeft, isPaused, isLoaded]);
 
-    /*
-    if(currentExercise === exercises.length -1){
-                    setAction("finished");
-                }
-    */
-
-    // Format time in MM:SS format
+    useEffect(() => {
+        ProgressService.save(workoutName, progress);
+        console.log('New progress saved: ', progress);
+    }, [progress]);    
+    
     const formatTime = (seconds) => {
         const minutes = Math.floor(seconds / 60);
         const secs = seconds % 60;

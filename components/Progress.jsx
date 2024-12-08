@@ -1,19 +1,47 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Text, View, SafeAreaView, StyleSheet, TouchableOpacity, ImageBackground } from 'react-native';
 import { PieChart } from "react-native-chart-kit";
 import { Dimensions } from "react-native";
+import ProgressService from "../assets/services/ProgressService";
 
 const screenWidth = Dimensions.get("window").width;
 
 const Progress= () => {
-    const streakDays = 5; // Example streak data
+    const streakDays = 5;
+    const [data, setData] = useState([
+        { name: "Core/Abs", population: 0, color: "#f94144", legendFontColor: "#7F7F7F", legendFontSize: 12 },
+        { name: "Back/Biceps", population: 0, color: "#f3722c", legendFontColor: "#7F7F7F", legendFontSize: 12 },
+        { name: "Legs/Glutes", population: 0, color: "#90be6d", legendFontColor: "#7F7F7F", legendFontSize: 12 },
+        { name: "Chest/Triceps", population: 0, color: "#577590", legendFontColor: "#7F7F7F", legendFontSize: 12 },
+   
+    ]);
+
+    useEffect(() => {
+
+        const loadProgress = async () => {
+            try {
+                const legsProgress = await ProgressService.load("legs") || 0;
+                const chestProgress = await ProgressService.load("chest") || 0;
+                const backProgress = await ProgressService.load("back") || 0;
+                const coreProgress = await ProgressService.load("core") || 0;
+
+                setData([
+                    { name: "Core/Abs", population: coreProgress, color: "#f94144", legendFontColor: "#7F7F7F", legendFontSize: 12 },
+                    { name: "Back/Biceps", population: backProgress, color: "#f3722c", legendFontColor: "#7F7F7F", legendFontSize: 12 },
+                    { name: "Legs/Glutes", population: legsProgress, color: "#90be6d", legendFontColor: "#7F7F7F", legendFontSize: 12 },
+                    { name: "Chest/Triceps", population: chestProgress, color: "#577590", legendFontColor: "#7F7F7F", legendFontSize: 12 },
+                ]);
+            } catch (error) {
+                console.log('Failed to load chart data');
+            }
+        };
+
+        loadProgress();
+
+    }, []); 
+
+
     
-    const data = [
-        { name: "Core/Abs", population: 5, color: "#f94144", legendFontColor: "#7F7F7F", legendFontSize: 12 },
-        { name: "Back/Biceps", population: 8, color: "#f3722c", legendFontColor: "#7F7F7F", legendFontSize: 12 },
-        { name: "Legs/Glutes", population: 10, color: "#90be6d", legendFontColor: "#7F7F7F", legendFontSize: 12 },
-        { name: "Chest/Triceps", population: 6, color: "#577590", legendFontColor: "#7F7F7F", legendFontSize: 12 },
-    ];
 
     return (
             <SafeAreaView style={styles.container}>

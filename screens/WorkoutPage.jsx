@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Text, View, SafeAreaView, StyleSheet } from "react-native";
-import AsyncStorage from '@react-native-async-storage/async-storage'
 import CustomButton from "../components/CustomButton";
 import Demonstration from "../components/Demonstration";
 import WorkoutImages from '../WorkoutImages';
-import ProgressService from "../assets/services/ProgressService";
+import StorageService from "../assets/services/StorageService";
 
 const WorkoutPage = ({ navigation, route, title}) => {
     const workoutName = route.params;
 
     // Timer state: starts at 1 minute (60 seconds)
-    const [timeLeft, setTimeLeft] = useState(2);
+    const [timeLeft, setTimeLeft] = useState(3);
     const [isPaused, setIsPaused] = useState(false);
     const [currentExercise, setCurrentExercise] = useState(0);
     const [action, setAction] = useState("ready");
@@ -23,12 +22,13 @@ const WorkoutPage = ({ navigation, route, title}) => {
 
     useEffect(() => {
         const loadProgress = async () => {
-           const savedProgress = await ProgressService.load(workoutName);
+           const savedProgress = await StorageService.loadWorkoutProgress(workoutName);
            setPrevProgress(savedProgress || 0);
-           console.log('Laded saved progress : ', savedProgress);
+           console.log('Loaded saved WorkoutProgress : ', savedProgress);
         };
 
         loadProgress();
+        setIsLoaded(true);
        
         return () => {
             console.log("Page is being unloaded!");
@@ -37,7 +37,9 @@ const WorkoutPage = ({ navigation, route, title}) => {
 
     // Countdown logic
     useEffect(() => {
-        if (!isLoaded) return; // Wait until progress is loaded
+        if (!isLoaded){
+            return; // Wait until progress is loaded
+        } 
 
         if (timeLeft > 0 && !isPaused) {
             const timer = setInterval(() => {
@@ -46,7 +48,7 @@ const WorkoutPage = ({ navigation, route, title}) => {
             return () => clearInterval(timer); // Cleanup
         } else if (timeLeft === 0) {
             if (action === "exercise") {
-                setTimeLeft(3);
+                setTimeLeft(2);
                 setCurrentDemo(WorkoutImages.rest);
                 setAction("rest");
                 if (currentExercise === exercises.length) {
@@ -54,15 +56,16 @@ const WorkoutPage = ({ navigation, route, title}) => {
                     setTimeLeft(0);
                     setCurrentDemo(WorkoutImages.finish);
                     setProgress(prevProgress + 1);
+                    StorageService.saveStreak();
                 }
             } else if (action === "ready") {
-                setTimeLeft(5);
+                setTimeLeft(2);
                 setCurrentExercise(0);
                 setCurrentDemo(exercises[currentExercise]);
                 setCurrentExercise((prevIndex) => prevIndex + 1);
                 setAction("exercise");
             } else if (action === "rest") {
-                setTimeLeft(5);
+                setTimeLeft(2);
                 setCurrentExercise((prevIndex) => prevIndex + 1);
                 setCurrentDemo(exercises[currentExercise]);
                 setAction("exercise");
@@ -71,7 +74,7 @@ const WorkoutPage = ({ navigation, route, title}) => {
     }, [timeLeft, isPaused, isLoaded]);
 
     useEffect(() => {
-        ProgressService.save(workoutName, progress);
+        StorageService.saveWorkoutProgress(workoutName, progress);
         console.log('New progress saved: ', progress);
     }, [progress]);    
     

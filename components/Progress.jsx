@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Text, View, SafeAreaView, StyleSheet, TouchableOpacity, ImageBackground } from 'react-native';
 import { PieChart } from "react-native-chart-kit";
 import { Dimensions } from "react-native";
-import ProgressService from "../assets/services/ProgressService";
+import StorageService from "../assets/services/StorageService";
 
 const screenWidth = Dimensions.get("window").width;
 
 const Progress= () => {
-    const streakDays = 5;
+    const [streakDays, setStreakDays] = useState(0);
     const [data, setData] = useState([
         { name: "Core/Abs", population: 0, color: "#f94144", legendFontColor: "#7F7F7F", legendFontSize: 12 },
         { name: "Back/Biceps", population: 0, color: "#f3722c", legendFontColor: "#7F7F7F", legendFontSize: 12 },
@@ -18,12 +18,23 @@ const Progress= () => {
 
     useEffect(() => {
 
+        const loadStreak = async () => {
+            try {
+
+                const streak = await StorageService.loadStreak() || 0;
+                setStreakDays(streak);
+
+            }catch {
+                console.log("erro loading streak");
+            }
+        }
+
         const loadProgress = async () => {
             try {
-                const legsProgress = await ProgressService.load("legs") || 0;
-                const chestProgress = await ProgressService.load("chest") || 0;
-                const backProgress = await ProgressService.load("back") || 0;
-                const coreProgress = await ProgressService.load("core") || 0;
+                const legsProgress = await StorageService.loadWorkoutProgress("legs");
+                const chestProgress = await StorageService.loadWorkoutProgress("chest");
+                const backProgress = await StorageService.loadWorkoutProgress("back");
+                const coreProgress = await StorageService.loadWorkoutProgress("core");
 
                 setData([
                     { name: "Core/Abs", population: coreProgress, color: "#f94144", legendFontColor: "#7F7F7F", legendFontSize: 12 },
@@ -37,6 +48,7 @@ const Progress= () => {
         };
 
         loadProgress();
+        loadStreak();
 
     }, []); 
 

@@ -24,13 +24,6 @@ const WorkoutsPage = ({navigation}) => {
                     workoutName="chest"
                 />
             </View>
-            <View >
-                <WorkoutButton
-                    title="Back/Biceps"
-                    onPress={() => navigation.navigate('Preview', {workoutName: 'back'})}
-                    workoutName="back"
-                />
-            </View>
         
             <View >
                 <WorkoutButton
@@ -40,8 +33,12 @@ const WorkoutsPage = ({navigation}) => {
                 />
             </View>
 
-            <View style={styles.button}>
-                    <CustomButton buttonName="Back to Home" onPress={() => navigation.popToTop()} />
+            <View >
+                <WorkoutButton
+                    title="Cardio"
+                    onPress={() => navigation.navigate('Preview', {workoutName: 'back'})}
+                    workoutName="back"
+                />
             </View>
              
         </SafeAreaView>

@@ -12,12 +12,7 @@ const WorkoutImages = {
     
     exercises: {
       chest: [
-        require('./assets/workouts/chest-tri/regular-push-up.png'),
-        require('./assets/workouts/chest-tri/wide-push-up.png'),
-        require('./assets/workouts/chest-tri/narrow-push-up.png'),
-        require('./assets/workouts/chest-tri/wall-push-up.png'),
-        require('./assets/workouts/chest-tri/lower-chest-push-up.png'),
-        require('./assets/workouts/chest-tri/upper-chest-push-up.png')
+        require('./assets/workouts/chest-tri/lower-chest-push-up.png')
       ]
     }, 
     exercisetNames:{

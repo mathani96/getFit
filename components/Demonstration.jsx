@@ -19,9 +19,11 @@ const Demonstration= ({exercisePath }) => {
 
 
     return(
-        <View>
+        <View style={styles.div}>
             <VideoView style={styles.gif}
-             player={player}         
+             player={player} 
+             resizeMode = "cover"   
+             nativeControls = {false}
             />
         </View>
 
@@ -31,10 +33,13 @@ const Demonstration= ({exercisePath }) => {
 const styles = StyleSheet.create({
     
     gif: {
-        padding: 15,
-        width: '90%',
-        height: '80%',
-        marginBottom: 20,
+        width: '100%',
+        height: '100%',
+        borderRadius: 5,
+    },
+    div: {
+        flex: 1,
+        borderRadius: 5,
     },
     
 });

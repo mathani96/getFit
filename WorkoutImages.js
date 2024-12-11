@@ -94,6 +94,5 @@ const WorkoutImages = {
     },
     
 
-  };
-  
-  export default WorkoutImages;
+};
+export default WorkoutImages;

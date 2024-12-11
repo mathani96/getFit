@@ -20,6 +20,18 @@ const WorkoutImages = {
         require('./assets/workouts/chest-tri/upper-chest-push-up.png')
       ]
     }, 
+    exercisetNames:{
+      chest: [
+        'Regular Push ups',
+        'wide push ups',
+      ]
+    },
+    exerciseInstructions:{
+      chest: [
+        'keep your back straight, hands shoulder width apart',
+        'keep your back straight, hands wider than shoulder width apart',
+      ]
+    }
   };
   
   export default WorkoutImages;

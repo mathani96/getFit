@@ -8,9 +8,11 @@ import ProgressBar from "../components/ProgressBar";
 
 const WorkoutPage = ({ navigation, route, title}) => {
     const workoutName = route.params;
+    const exerciseTime = 60;
+    const restTime = 30;
 
     // Timer state: starts at 1 minute (60 seconds)
-    const [timeLeft, setTimeLeft] = useState(3);
+    const [timeLeft, setTimeLeft] = useState(5);
     const [isPaused, setIsPaused] = useState(false);
     const [currentExercise, setCurrentExercise] = useState(0);
     const [action, setAction] = useState("ready");
@@ -53,7 +55,7 @@ const WorkoutPage = ({ navigation, route, title}) => {
             return () => clearInterval(timer); // Cleanup
         } else if (timeLeft === 0) {
             if (action === "exercise") {
-                setTimeLeft(6);
+                setTimeLeft(restTime);
                 setExerciseName(" ");
                 setExerciseInstructions(" ");
                 setCurrentDemo(WorkoutImages.rest);
@@ -68,7 +70,7 @@ const WorkoutPage = ({ navigation, route, title}) => {
                     StorageService.saveStreak();
                 }
             } else if (action === "ready") {
-                setTimeLeft(6);
+                setTimeLeft(exerciseTime);
                 setCurrentExercise(0);
                 setCurrentDemo(exercises[currentExercise]);
                 setExerciseName(names[currentExercise]);
@@ -76,11 +78,11 @@ const WorkoutPage = ({ navigation, route, title}) => {
                 setCurrentExercise((prevIndex) => prevIndex + 1);
                 setAction("exercise");
             } else if (action === "rest") {
-                setTimeLeft(8);
+                setTimeLeft(exerciseTime);
                 setCurrentExercise((prevIndex) => prevIndex + 1);
                 setCurrentDemo(exercises[currentExercise]);
-                setExerciseName(exerciseName[currentExercise]);
-                setExerciseInstructions(exerciseInstructions[currentExercise]);
+                setExerciseName(names[currentExercise]);
+                setExerciseInstructions(instructions[currentExercise]);
                 setAction("exercise");
             }
         }
@@ -190,9 +192,6 @@ const styles = StyleSheet.create({
         marginTop: 20,
         width: "90%",
         height: "20%",
-        borderColor: "#000",
-        borderWidth: 1,
-        borderRadius: 5,
         justifyContent: "center",
     },
     descriptionText: {

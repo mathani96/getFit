@@ -38,7 +38,7 @@ const Progress= () => {
 
                 setData([
                     { name: "Core/Abs", population: coreProgress, color: "#f94144", legendFontColor: "#7F7F7F", legendFontSize: 12 },
-                    { name: "Cardio/full-body", population: backProgress, color: "#f3722c", legendFontColor: "#7F7F7F", legendFontSize: 12 },
+                    { name: "Cardio", population: backProgress, color: "#f3722c", legendFontColor: "#7F7F7F", legendFontSize: 12 },
                     { name: "Legs/Glutes", population: legsProgress, color: "#90be6d", legendFontColor: "#7F7F7F", legendFontSize: 12 },
                     { name: "Chest/Triceps", population: chestProgress, color: "#577590", legendFontColor: "#7F7F7F", legendFontSize: 12 },
                 ]);

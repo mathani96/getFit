@@ -28,7 +28,7 @@ const WorkoutsPage = ({navigation}) => {
             <View >
                 <WorkoutButton
                     title="Core/Abs"
-                    onPress={() => navigation.navigate('Preview', {workoutName: 'abs'})}
+                    onPress={() => navigation.navigate('Preview', {workoutName: 'core'})}
                     workoutName="abs"
                 />
             </View>
@@ -36,7 +36,7 @@ const WorkoutsPage = ({navigation}) => {
             <View >
                 <WorkoutButton
                     title="Cardio"
-                    onPress={() => navigation.navigate('Preview', {workoutName: 'back'})}
+                    onPress={() => navigation.navigate('Preview', {workoutName: 'cardio'})}
                     workoutName="back"
                 />
             </View>

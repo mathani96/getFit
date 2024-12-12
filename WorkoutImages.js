@@ -1,40 +1,72 @@
 const WorkoutImages = {
   
-  rest: require('./assets/workouts/ready.mp4'),
-  ready: require('./assets/workouts/ready.mp4'),
-  finish: require('./assets/workouts/ready.mp4'),
+  rest: require('./assets/rest.mp4'),
+  ready: require('./assets/ready.mp4'),
+  finish: require('./assets/done.mp4'),
 
   workoutCategories: {
-      abs: require('./assets/muscleGroups/abs.png'),
-      legs: require('./assets/muscleGroups/quads.png'),
+      abs: require('./assets/muscleGroups/core.png'),
+      legs: require('./assets/muscleGroups/legs.png'),
       chest: require('./assets/muscleGroups/chest.png'),
-      back: require('./assets/muscleGroups/back.png'),
+      back: require('./assets/muscleGroups/full-body.png'),
+    },
+
+    previews: {
+      chest: [
+        require('./assets/previewImages/chestPreview/regular_pushup_1.png'),
+        require('./assets/previewImages/chestPreview/wide_pushup_1.png'),
+        require('./assets/previewImages/chestPreview/diamond_pushup_1.png'),
+        require('./assets/previewImages/chestPreview/tricep_dips_1.png'),
+        require('./assets/previewImages/chestPreview/decline_pushup.png'),
+        require('./assets/previewImages/chestPreview/incline_pushup_1.png'),
+        require('./assets/previewImages/chestPreview/shoulder_press.png'),
+      ],
+      legs: [
+        require('./assets/previewImages/legsPreview/regular_squat.png'),
+        require('./assets/previewImages/legsPreview/quad_squat.png'),
+      ],
+      core: [
+        require('./assets/previewImages/corePreview/situps_1.png'),
+        require('./assets/previewImages/corePreview/leg_raises_1.png'),
+        
+      ],
+      cardio: [
+        require('./assets/previewImages/fullBodyPreview/jumping_jack_2.png'),
+        require('./assets/previewImages/fullBodyPreview/high_knees_2.png'),
+      ],
     },
     
     exercises: {
       chest: [
-        require('./assets/workouts/chest-tri/push-up-regular.mp4'),
-        require('./assets/workouts/chest-tri/push-up-regular.mp4')
+        require('./assets/workouts/chest/push-up-regular.mp4'),
+        require('./assets/workouts/chest/push-up-wide.mp4'),
+        require('./assets/workouts/chest/push-up-narrow.mp4')
       ],
       legs: [
-
+        require('./assets/workouts/legs/squat-glutes-hamstrings.mp4'),
+        require('./assets/workouts/legs/squat-quads.mp4'),
       ],
       core: [
-
+        require('./assets/workouts/core/sit_ups.mp4'),
+        require('./assets/workouts/core/leg_raises.mp4'),
+        
       ],
       cardio: [
-
+        require('./assets/workouts/full-body/jumping-jacks.mp4'),
+        require('./assets/workouts/full-body/high-knees.mp4'),
       ],
     },
+
+
     
     exerciseNames: {
 
-      chest: ['Push-up Regular', 'Push-up Wide', 'Push-up Wide',
+      chest: ['Push-up Regular', 'Push-up Wide', 'Push-up Narrow',
               'Dips', 'Push-up Decline', 'Push-up Incline',
               'Shoulder Press',
       ],
 
-      legs: ['Glute & Hamstrings Squat', 'Quad Squat', 'Glute Bridge',
+      legs: ['Regular Squat', 'Quad Squat', 'Glute Bridge',
             'Lunges Left', 'Lunges Right', 'Calf Raise',
             'Single Leg Deadlift Right', 'Single Leg Deadlift Left',
       ],

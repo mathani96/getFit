@@ -10,7 +10,7 @@ const Progress= () => {
     const [streakDays, setStreakDays] = useState(0);
     const [data, setData] = useState([
         { name: "Core/Abs", population: 0, color: "#f94144", legendFontColor: "#7F7F7F", legendFontSize: 12 },
-        { name: "Back/Biceps", population: 0, color: "#f3722c", legendFontColor: "#7F7F7F", legendFontSize: 12 },
+        { name: "Cardio/full-body", population: 0, color: "#f3722c", legendFontColor: "#7F7F7F", legendFontSize: 12 },
         { name: "Legs/Glutes", population: 0, color: "#90be6d", legendFontColor: "#7F7F7F", legendFontSize: 12 },
         { name: "Chest/Triceps", population: 0, color: "#577590", legendFontColor: "#7F7F7F", legendFontSize: 12 },
    
@@ -33,12 +33,12 @@ const Progress= () => {
             try {
                 const legsProgress = await StorageService.loadWorkoutProgress("legs");
                 const chestProgress = await StorageService.loadWorkoutProgress("chest");
-                const backProgress = await StorageService.loadWorkoutProgress("back");
+                const backProgress = await StorageService.loadWorkoutProgress("cardio");
                 const coreProgress = await StorageService.loadWorkoutProgress("core");
 
                 setData([
                     { name: "Core/Abs", population: coreProgress, color: "#f94144", legendFontColor: "#7F7F7F", legendFontSize: 12 },
-                    { name: "Back/Biceps", population: backProgress, color: "#f3722c", legendFontColor: "#7F7F7F", legendFontSize: 12 },
+                    { name: "Cardio/full-body", population: backProgress, color: "#f3722c", legendFontColor: "#7F7F7F", legendFontSize: 12 },
                     { name: "Legs/Glutes", population: legsProgress, color: "#90be6d", legendFontColor: "#7F7F7F", legendFontSize: 12 },
                     { name: "Chest/Triceps", population: chestProgress, color: "#577590", legendFontColor: "#7F7F7F", legendFontSize: 12 },
                 ]);

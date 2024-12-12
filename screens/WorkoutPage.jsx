@@ -4,6 +4,7 @@ import CustomButton from "../components/CustomButton";
 import Demonstration from "../components/Demonstration";
 import WorkoutImages from '../WorkoutImages';
 import StorageService from "../assets/services/StorageService";
+import ProgressBar from "../components/ProgressBar";
 
 const WorkoutPage = ({ navigation, route, title}) => {
     const workoutName = route.params;
@@ -17,8 +18,12 @@ const WorkoutPage = ({ navigation, route, title}) => {
     const [progress, setProgress] = useState(0);
     const [prevProgress, setPrevProgress] = useState(0);
     const [isLoaded, setIsLoaded] = useState(false);
+    const [exerciseName, setExerciseName] = useState(" ");
+    const [exerciseInstructions, setExerciseInstructions] = useState(" ");
 
     const exercises = WorkoutImages.exercises[workoutName];
+    const names = WorkoutImages.exerciseNames[workoutName];
+    const instructions = WorkoutImages.exerciseInstructions[workoutName];
 
     useEffect(() => {
         const loadProgress = async () => {
@@ -48,26 +53,34 @@ const WorkoutPage = ({ navigation, route, title}) => {
             return () => clearInterval(timer); // Cleanup
         } else if (timeLeft === 0) {
             if (action === "exercise") {
-                setTimeLeft(2);
+                setTimeLeft(6);
+                setExerciseName(" ");
+                setExerciseInstructions(" ");
                 setCurrentDemo(WorkoutImages.rest);
                 setAction("rest");
                 if (currentExercise === exercises.length) {
                     setAction("finished");
                     setTimeLeft(0);
                     setCurrentDemo(WorkoutImages.finish);
+                    setExerciseName(" ");
+                    setExerciseInstructions(" ");
                     setProgress(prevProgress + 1);
                     StorageService.saveStreak();
                 }
             } else if (action === "ready") {
-                setTimeLeft(2);
+                setTimeLeft(6);
                 setCurrentExercise(0);
                 setCurrentDemo(exercises[currentExercise]);
+                setExerciseName(names[currentExercise]);
+                setExerciseInstructions(instructions[currentExercise]);
                 setCurrentExercise((prevIndex) => prevIndex + 1);
                 setAction("exercise");
             } else if (action === "rest") {
-                setTimeLeft(2);
+                setTimeLeft(8);
                 setCurrentExercise((prevIndex) => prevIndex + 1);
                 setCurrentDemo(exercises[currentExercise]);
+                setExerciseName(exerciseName[currentExercise]);
+                setExerciseInstructions(exerciseInstructions[currentExercise]);
                 setAction("exercise");
             }
         }
@@ -87,7 +100,8 @@ const WorkoutPage = ({ navigation, route, title}) => {
     return (
         <SafeAreaView style={styles.container}>
 
-<           View style={styles.progressBar}></View>
+            
+            <ProgressBar length={exercises.length} current={currentExercise}></ProgressBar>
 
             <View style={styles.timerContainer}>
                 <Text style={styles.timerText}>{formatTime(timeLeft)}</Text>
@@ -95,7 +109,7 @@ const WorkoutPage = ({ navigation, route, title}) => {
             </View>
 
             <View style={styles.workoutName}>
-                <Text style={styles.nameText}> Workout Name</Text>
+                <Text style={styles.nameText}>{exerciseName}</Text>
             </View>
 
             <View style={styles.workoutDemo}>
@@ -103,13 +117,13 @@ const WorkoutPage = ({ navigation, route, title}) => {
             </View>
 
             <View style={styles.workoutDescription}>
-                <Text style={styles.descriptionText}>Here will be the description of each workout </Text>
+                <Text style={styles.descriptionText}>{exerciseInstructions}</Text>
             </View>
 
             <View style={styles.footer}>
 
                 <View style={styles.buttonPosQuit}>
-                    <CustomButton buttonName="Quit workout" onPress={() => navigation.navigate('Workouts')} />
+                    <CustomButton buttonName="Quit workout" onPress={() => navigation.navigate('Home')} />
                 </View>
 
 

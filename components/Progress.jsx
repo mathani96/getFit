@@ -37,10 +37,10 @@ const Progress= () => {
                 const coreProgress = await StorageService.loadWorkoutProgress("core");
 
                 setData([
-                    { name: "Core/Abs", population: coreProgress, color: "#f94144", legendFontColor: "#7F7F7F", legendFontSize: 12 },
+                    { name: "Core", population: coreProgress, color: "#f94144", legendFontColor: "#7F7F7F", legendFontSize: 12 },
                     { name: "Cardio", population: backProgress, color: "#f3722c", legendFontColor: "#7F7F7F", legendFontSize: 12 },
-                    { name: "Legs/Glutes", population: legsProgress, color: "#90be6d", legendFontColor: "#7F7F7F", legendFontSize: 12 },
-                    { name: "Chest/Triceps", population: chestProgress, color: "#577590", legendFontColor: "#7F7F7F", legendFontSize: 12 },
+                    { name: "Legs", population: legsProgress, color: "#90be6d", legendFontColor: "#7F7F7F", legendFontSize: 12 },
+                    { name: "Chest", population: chestProgress, color: "#577590", legendFontColor: "#7F7F7F", legendFontSize: 12 },
                 ]);
             } catch (error) {
                 console.log('Failed to load chart data');
@@ -63,7 +63,7 @@ const Progress= () => {
                 </View>
 
                 {/* Pie Chart Section */}
-                <Text style={styles.sectionTitle}>Workout Breakdown</Text>
+                <Text style={styles.sectionTitle}>My Workout Progress</Text>
                 <PieChart  style={styles.sectionPie}
                     data={data}
                     width={screenWidth}
@@ -93,7 +93,8 @@ const styles = StyleSheet.create({
         backgroundColor: "#f5f5f5"
     },
     sectionPie: {
-        marginBottom: 50,
+        height: "40%",
+        marginBottom: 60,
     },
     streakContainer: {
         backgroundColor: "#f5f5f5",
@@ -106,14 +107,15 @@ const styles = StyleSheet.create({
         width: "90%",
     },
     streakText: {
-        fontSize: 22,
+        fontSize: 28,
         fontWeight: "bold",
         color: "#000",
     },
     sectionTitle: {
-        fontSize: 18,
+        fontSize: 28,
         fontWeight: "bold",
-        color: "#000", // Text stands out on background
+        color: "#000", 
+        marginTop: 30,
     },
 });
 

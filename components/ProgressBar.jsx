@@ -23,15 +23,15 @@ const styles = StyleSheet.create({
   
     container:{
 
-        width: "95%",
-        height: 10,
+        width: "90%",
+        height: 25,
         backgroundColor: '#e0e0e0',
         borderRadius: 5,
         overflow: 'hidden',
 
     },
     bar: {
-        height: 10,
+        height: 25,
         backgroundColor: "#ffcc00",
         borderColor: "#000"
     },

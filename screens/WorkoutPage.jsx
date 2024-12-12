@@ -103,7 +103,7 @@ const WorkoutPage = ({ navigation, route, title}) => {
         <SafeAreaView style={styles.container}>
 
             
-            <ProgressBar length={exercises.length} current={currentExercise}></ProgressBar>
+            <ProgressBar length={exercises.length} current={currentExercise} style={styles.progressBar}></ProgressBar>
 
             <View style={styles.timerContainer}>
                 <Text style={styles.timerText}>{formatTime(timeLeft)} 🕔</Text>
@@ -148,14 +148,6 @@ const styles = StyleSheet.create({
         alignItems: "center",
         backgroundColor: "#f5f5f5",
     },
-    progressBar:{
-        height:10,
-        width: "90%",
-        borderRadius:3,
-        borderWidth: 1,
-        backgroundColor: "#ffcc00",
-        borederColor: "#000",
-    },
     timerContainer: {
         marginTop:20 ,
         backgroundColor: "#ffcc00",
@@ -195,17 +187,19 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     descriptionText: {
-        fontSize: 16,
+        fontSize: 20,
         color: "#333",
         textAlign:"center",
     },
     footer: {
-        marginTop:20 ,
+        padding: 10,
         height: "15%",
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
         width: "90%",
+        position: "absolute",
+        bottom: 5,
     },
     buttonPosQuit: {
         flex:1,

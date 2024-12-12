@@ -7,19 +7,19 @@ import CustomButton from '../components/CustomButton';
 const WorkoutsPage = ({navigation}) => {
     return (
         <SafeAreaView style={styles.container}>
-            <View >
+            <View style={styles.title}>
                 <Text style={styles.textX}>Choose your Workout</Text>
             </View>
             <View >
                 <WorkoutButton
-                    title="Legs/Glutes"
+                    title="Legs"
                     onPress={() => navigation.navigate('Preview', {workoutName: 'legs'})}
                     workoutName="legs"
                 />
             </View>
             <View >
                 <WorkoutButton
-                    title="Chest/Triceps"
+                    title="Chest"
                     onPress={() => navigation.navigate('Preview', {workoutName: 'chest'})}
                     workoutName="chest"
                 />
@@ -27,7 +27,7 @@ const WorkoutsPage = ({navigation}) => {
         
             <View >
                 <WorkoutButton
-                    title="Core/Abs"
+                    title="Core"
                     onPress={() => navigation.navigate('Preview', {workoutName: 'core'})}
                     workoutName="abs"
                 />
@@ -56,13 +56,17 @@ const styles = StyleSheet.create({
     textX: {
         color: "#000",
         fontWeight: "bold",
-        fontSize: 20,
+        fontSize: 30,
+        
     },
     button: {
         width: '100%',
         alignItems: 'center',
         justifyContent: 'center',
     },
+    title:{
+        paddingBottom: 30,
+    }
 });
 
 export default WorkoutsPage;

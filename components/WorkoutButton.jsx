@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
   textX: {
     color: "#000",
     fontWeight: "bold",
-    fontSize: 20,
+    fontSize: 25,
   },
   image: {
     width: 100,

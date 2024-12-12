@@ -39,12 +39,12 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     borderWidth: 5,
     alignItems: 'center',
-    width: '80%', // Adjust width as needed
-    marginVertical: 8, // Space between buttons
+    width: '80%', 
+    marginVertical: 8, 
   },
   body: {
-    flexDirection: 'row', // Arrange items horizontally
-    alignItems: 'center', // Center items vertically
+    flexDirection: 'row', 
+    alignItems: 'center', 
     justifyContent: 'space-between',
     width: '80%',
   },

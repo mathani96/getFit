@@ -25,7 +25,7 @@ const HomePage = ({navigation}) => {
                 </View>
                 <View style={styles.body}>
                     <HomePageButton 
-                    title="Walkthrough"
+                    title="Instructions"
                     onPress={() => navigation.navigate('Instructions')}/>
                 </View>
             </SafeAreaView>
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         alignItems: "center",
         width: "90%",
-        height: "40%",
+        height: "30%",
     },
     title:{
         textAlign: "center",

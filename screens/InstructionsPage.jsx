@@ -6,24 +6,32 @@ const { width: screenWidth } = Dimensions.get("window");
 const InstructionsPage = ({ navigation }) => {
     const carouselItems = [
         {
-            title: "Welcome to the Workout App",
+            title: "Welcome to GetFit!",
             text: "No registration is required. Just open the app and start exploring!",
         },
         {
             title: "Home Page",
-            text: "The home page has three buttons:\n1. Workouts\n2. Progress\n3. Instructions",
+            text: "The home page has three buttons:\n1. Workouts\n2. Progress\n3. Walkthrough\nthere is also a window with motivational quotes to help you get motivated for your workout session.",
         },
         {
             title: "Workouts",
-            text: "Tap on 'Workouts' to view exercises for different muscle groups. Choose a workout and start exercising!",
+            text: "Tap on 'Workouts' to view exercises for the different muscle groups. Press on the desired muscle group you want to train.",
+        },
+        {
+            title: "Workout Previw",
+            text: "Tap on 'Workouts' to view the exercises that are included in the upcoming workout session. Press start and begin exercising!",
+        },
+        {
+            title: "Workout Page",
+            text: "Once you hit start on the previous page you are then led to the workout page where there is a video for visual aid on how to preform each workout and written instructions for additional guidance.",
         },
         {
             title: "Progress",
             text: "Tap on 'Progress' to view your streaks and a breakdown of your workouts.",
         },
         {
-            title: "Instructions",
-            text: "Tap on 'Instructions' for help with using the app and its features.",
+            title: "Walkthrough",
+            text: "Tap on 'Walkthrough' for help with using the app and its features.",
         },
     ];
 
@@ -61,7 +69,7 @@ const InstructionsPage = ({ navigation }) => {
             </View>
             <View style={styles.footer}>
                 <TouchableOpacity style={styles.buttonX} onPress={() => navigation.popToTop()}>
-                    <Text style={styles.textX}>GO TO HOME</Text>
+                    <Text style={styles.textX}>Go To Home</Text>
                 </TouchableOpacity>
             </View>
         </SafeAreaView>

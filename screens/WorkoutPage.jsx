@@ -104,7 +104,7 @@ const WorkoutPage = ({ navigation, route, title}) => {
             <ProgressBar length={exercises.length} current={currentExercise}></ProgressBar>
 
             <View style={styles.timerContainer}>
-                <Text style={styles.timerText}>{formatTime(timeLeft)}</Text>
+                <Text style={styles.timerText}>{formatTime(timeLeft)} 🕔</Text>
                 
             </View>
 

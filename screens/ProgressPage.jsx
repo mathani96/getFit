@@ -9,7 +9,7 @@ const ProgressPage = ({navigation}) => {
             <Progress></Progress>
             <View style={styles.footer}>
                     <TouchableOpacity style={styles.buttonX} onPress={() => navigation.popToTop()}>
-                        <Text style={styles.textX}>GO BACK</Text>
+                        <Text style={styles.textX}>Go Back</Text>
                     </TouchableOpacity>
             </View>
         </SafeAreaView>

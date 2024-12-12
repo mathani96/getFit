@@ -30,7 +30,7 @@ const ExercisePreview = ({ workout }) => {
       {/* Text on the left */}
       <Text style={styles.buttonText}>{title}</Text>
       {/* Image on the right */}
-      <Image source={require('../assets/muscleGroups/abs.png')} style={styles.image} />
+      <Image source={require('../assets/muscleGroups/core.png')} style={styles.image} />
     </View>
   );
 };

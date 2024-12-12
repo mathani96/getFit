@@ -5,16 +5,16 @@ const WorkoutImages = {
   finish: require('./assets/workouts/ready.mp4'),
 
   workoutCategories: {
-      abs: require('./assets/muscleGroups/abs.png'),
-      legs: require('./assets/muscleGroups/quads.png'),
+      abs: require('./assets/muscleGroups/core.png'),
+      legs: require('./assets/muscleGroups/legs.png'),
       chest: require('./assets/muscleGroups/chest.png'),
-      back: require('./assets/muscleGroups/back.png'),
+      back: require('./assets/muscleGroups/full-body.png'),
     },
     
     exercises: {
       chest: [
-        require('./assets/workouts/chest-tri/push-up-regular.mp4'),
-        require('./assets/workouts/chest-tri/push-up-regular.mp4')
+        require('./assets/workouts/chest/push-up-regular.mp4'),
+        require('./assets/workouts/chest/push-up-regular.mp4')
       ],
       legs: [
 

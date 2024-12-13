@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   message: {
-    fontSize: 35,
+    fontSize: 30,
     fontWeight: "bold",
     fontFamily: "cursive",
     color: "#333",

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, Text, TouchableOpacity, StyleSheet, View } from 'react-native';
+import {Image, Text, StyleSheet, View } from 'react-native';
 
 
 
@@ -8,9 +8,9 @@ const ExercisePreview = ({ name, exerciseSource }) => {
   return (
     
     <View style={styles.container}>
-      {/* Text on the left */}
+   
       <Text style={styles.buttonText}>{name}</Text>
-      {/* Image on the right */}
+     
       <Image source={exerciseSource} style={styles.image} />
     </View>
   );
@@ -21,44 +21,34 @@ const ExercisePreview = ({ name, exerciseSource }) => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#f5f5f5",
-    padding: 20,
+    padding: 10,
     borderWidth: 5,
     borderColor: "#ffcc00",
     borderRadius: 10,
     marginTop: 5,
-    width: "95%",
+    width: "100%",
     height: 110,
     flexDirection: 'row',
     alignItems: 'center', 
     justifyContent: 'space-between',
+    alignSelf: "center",
 
-  },
-  button: {
-    padding: 12,
-    borderRadius: 8,
-    borderColor: 'black',
-    borderWidth: 5,
-    alignItems: 'center',
-    width: '80%', 
-    marginVertical: 8, 
-  },
-  body: {
-    flexDirection: 'row', 
-    alignItems: 'center', 
-    justifyContent: 'space-between',
-    width: '80%',
   },
   buttonText: {
     color: '#000',
     fontSize: 25,
     fontWeight: 'bold',
     textTransform: 'capitalize',
+    flex: 1, 
+    flexShrink: 1, 
+    marginRight: 10,
   },
   image: {
     width: 100,
     height: undefined, 
     aspectRatio: 1,
     borderRadius: 5,
+    marginBottom: 15,
   },
 });
 

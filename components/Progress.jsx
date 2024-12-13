@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Text, View, SafeAreaView, StyleSheet, TouchableOpacity, ImageBackground } from 'react-native';
+import { Text, View, SafeAreaView, StyleSheet} from 'react-native';
 import { PieChart } from "react-native-chart-kit";
 import { Dimensions } from "react-native";
-import StorageService from "../assets/services/StorageService";
+import StorageService from "../services/StorageService";
 
 const screenWidth = Dimensions.get("window").width;
 
@@ -57,12 +57,11 @@ const Progress= () => {
 
     return (
             <SafeAreaView style={styles.container}>
-                {/* Streak Section */}
+
                 <View style={styles.streakContainer}>
                     <Text style={styles.streakText}>  Streak: {streakDays} Days 🔥</Text>
                 </View>
 
-                {/* Pie Chart Section */}
                 <Text style={styles.sectionTitle}>My Workout Progress</Text>
                 <PieChart  style={styles.sectionPie}
                     data={data}

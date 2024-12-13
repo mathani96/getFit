@@ -1,15 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { Text, View, SafeAreaView, StyleSheet } from "react-native";
-import CustomButton from "../components/CustomButton";
-import WorkoutImages from '../WorkoutImages';
-import StorageService from "../assets/services/StorageService";
+import React  from "react";
+import { View, StyleSheet } from "react-native";
 
 const ProgressBar = ({length, current}) => {
 
     const progressPercentage = (current/length)*100;
-
-
-    //const[progress, setProgress] = useState(0);
 
 
     return (

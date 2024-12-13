@@ -22,9 +22,9 @@ const WorkoutButton = ({ title, onPress, workoutName }) => {
       onPress={onPress}
     >
       <View style={styles.body}>
-      {/* Text on the left */}
+     
       <Text style={styles.textX}>{title}</Text>
-      {/* Image on the right */}
+
       {imageSource && <Image source={imageSource} style={styles.image} />}
     </View>
     </TouchableOpacity>

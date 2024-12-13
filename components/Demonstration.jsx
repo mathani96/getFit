@@ -4,7 +4,6 @@ import { View, StyleSheet} from 'react-native';
 import * as ExpoVideo from 'expo-video';
 const { useVideoPlayer, VideoView } = ExpoVideo;
 
-import { useEvent } from "expo";
 
 const Demonstration= ({exercisePath }) => {
 

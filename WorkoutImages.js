@@ -5,10 +5,10 @@ const WorkoutImages = {
   finish: require('./assets/done.mp4'),
 
   workoutCategories: {
-      abs: require('./assets/muscleGroups/core.png'),
+      core: require('./assets/muscleGroups/core.png'),
       legs: require('./assets/muscleGroups/legs.png'),
       chest: require('./assets/muscleGroups/chest.png'),
-      back: require('./assets/muscleGroups/full-body.png'),
+      cardio: require('./assets/muscleGroups/full-body.png'),
     },
 
     previews: {

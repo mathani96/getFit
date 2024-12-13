@@ -39,7 +39,7 @@ const InstructionsPage = ({ navigation }) => {
 
     const onViewableItemsChanged = ({ viewableItems }) => {
         if (viewableItems.length > 0) {
-            setCurrentIndex(viewableItems[0].index); // Update the active slide index
+            setCurrentIndex(viewableItems[0].index); 
         }
     };
 
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#f5f5f5",
     },
     carouselContainer: {
-        flex: 1, // Ensures the carousel fills the available vertical space
+        flex: 1,
         justifyContent: "center",
         alignItems: "center",
         marginTop: 20,
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         padding: 20,
         width: screenWidth * 0.8,
-        height: "80%", // Adjust card height to fit within the screen dynamically
+        height: "80%", 
         justifyContent: "center",
         alignItems: "center",
         shadowColor: "#000",
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
         elevation: 5,
-        marginHorizontal: screenWidth * 0.1, // Center the card
+        marginHorizontal: screenWidth * 0.1, 
     },
     title: {
         fontSize: 20,

@@ -1,6 +1,4 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, ScrollView , Button, SafeAreaView} from 'react-native';
-import WorkoutButton from '../components/WorkoutButton';
+import { StyleSheet, Text, View, ScrollView , SafeAreaView} from 'react-native';
 import ExercisePreview from '../components/ExercisePreview';
 import CustomButton from '../components/CustomButton';
 import WorkoutImages from '../WorkoutImages';
@@ -22,12 +20,12 @@ const WorkoutPreviewPage = ({ navigation, route}) => {
             </View>
             
             <ScrollView contentContainerStyle={styles.scrollBody}>
-                {/* Dynamically spawn ExercisePreview components */}
+              
                 {previews.map((imagePath, index) => (
                     <ExercisePreview
                         key={index}
                         name={names[index]}
-                        exerciseSource={imagePath} // Pass the image path as prop
+                        exerciseSource={imagePath} 
                     />
                 ))}
             </ScrollView>
@@ -53,7 +51,7 @@ const styles = StyleSheet.create({
     },
     scrollBody: {
         marginBottom: 15,
-        justifyContent: 'flex-start',
+        justifyContent: 'center',
         alignItems: 'center',
         padding: 16,
         width:'100%',

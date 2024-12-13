@@ -8,7 +8,7 @@ const MotivationalMessage = () => {
     "You are stronger than you think! 💪💥",
     "Consistency is key to success! ⏳📈",
     "Small steps lead to big changes! 🚶‍♀️➡️🏅",
-    "You've got this! 🏋️‍♂️🔥",
+    "You've got this! 🔥🔥",
     "Push harder, go stronger! 💪👏",
     "Every step gets you closer! 🏃‍♀️🎯",
     "Celebrate your wins! 🎉🌟",

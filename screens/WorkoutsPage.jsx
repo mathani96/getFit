@@ -1,7 +1,5 @@
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View , SafeAreaView} from 'react-native';
 import WorkoutButton from '../components/WorkoutButton';
-import CustomButton from '../components/CustomButton';
 
 
 const WorkoutsPage = ({navigation}) => {
@@ -29,7 +27,7 @@ const WorkoutsPage = ({navigation}) => {
                 <WorkoutButton
                     title="Core"
                     onPress={() => navigation.navigate('Preview', {workoutName: 'core'})}
-                    workoutName="abs"
+                    workoutName="core"
                 />
             </View>
 
@@ -37,7 +35,7 @@ const WorkoutsPage = ({navigation}) => {
                 <WorkoutButton
                     title="Cardio"
                     onPress={() => navigation.navigate('Preview', {workoutName: 'cardio'})}
-                    workoutName="back"
+                    workoutName="cardio"
                 />
             </View>
              
@@ -56,7 +54,7 @@ const styles = StyleSheet.create({
     textX: {
         color: "#000",
         fontWeight: "bold",
-        fontSize: 30,
+        fontSize: 28,
         
     },
     button: {
@@ -65,7 +63,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     title:{
-        paddingBottom: 30,
+        paddingBottom: 10,
     }
 });
 

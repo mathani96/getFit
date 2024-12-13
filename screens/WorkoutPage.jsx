@@ -3,7 +3,7 @@ import { Text, View, SafeAreaView, StyleSheet } from "react-native";
 import CustomButton from "../components/CustomButton";
 import Demonstration from "../components/Demonstration";
 import WorkoutImages from '../WorkoutImages';
-import StorageService from "../assets/services/StorageService";
+import StorageService from "../services/StorageService";
 import ProgressBar from "../components/ProgressBar";
 
 const WorkoutPage = ({ navigation, route, title}) => {
@@ -11,7 +11,7 @@ const WorkoutPage = ({ navigation, route, title}) => {
     const exerciseTime = 60;
     const restTime = 30;
 
-    // Timer state: starts at 1 minute (60 seconds)
+ 
     const [timeLeft, setTimeLeft] = useState(5);
     const [isPaused, setIsPaused] = useState(false);
     const [currentExercise, setCurrentExercise] = useState(0);
@@ -42,17 +42,17 @@ const WorkoutPage = ({ navigation, route, title}) => {
         };
     }, []);
 
-    // Countdown logic
+  
     useEffect(() => {
         if (!isLoaded){
-            return; // Wait until progress is loaded
+            return; 
         } 
 
         if (timeLeft > 0 && !isPaused) {
             const timer = setInterval(() => {
                 setTimeLeft((prevTime) => prevTime - 1);
             }, 1000);
-            return () => clearInterval(timer); // Cleanup
+            return () => clearInterval(timer);
         } else if (timeLeft === 0) {
             if (action === "exercise") {
                 setTimeLeft(restTime);
@@ -187,12 +187,11 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     descriptionText: {
-        fontSize: 20,
+        fontSize: 15,
         color: "#333",
         textAlign:"center",
     },
     footer: {
-        padding: 10,
         height: "15%",
         flexDirection: "row",
         alignItems: "center",

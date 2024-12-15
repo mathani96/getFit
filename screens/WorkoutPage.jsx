@@ -7,10 +7,7 @@ import StorageService from "../services/StorageService";
 import ProgressBar from "../components/ProgressBar";
 
 const WorkoutPage = ({ navigation, route, title}) => {
-    const workoutName = route.params;
-    const exerciseTime = 60;
-    const restTime = 30;
-
+    const {workoutName, exerciseTime, restTime} = route.params;
  
     const [timeLeft, setTimeLeft] = useState(5);
     const [isPaused, setIsPaused] = useState(false);
@@ -42,11 +39,47 @@ const WorkoutPage = ({ navigation, route, title}) => {
         };
     }, []);
 
-  
     useEffect(() => {
-        if (!isLoaded){
-            return; 
-        } 
+        if (!isLoaded) {
+            return;
+        }
+
+        const handleExercise = () => {
+            setTimeLeft(restTime);
+            setExerciseName(" ");
+            setExerciseInstructions(" ");
+            setCurrentDemo(Assets.rest);
+            setAction("rest");
+
+            if (currentExercise === exercises.length) {
+                setAction("finished");
+                setTimeLeft(0);
+                setCurrentDemo(Assets.finish);
+                setExerciseName(" ");
+                setExerciseInstructions(" ");
+                setProgress(prevProgress + 1);
+                StorageService.saveStreak();
+            }
+        };
+
+        const handleReady = () => {
+            setTimeLeft(exerciseTime);
+            setCurrentExercise(0);
+            setCurrentDemo(exercises[currentExercise]);
+            setExerciseName(names[currentExercise]);
+            setExerciseInstructions(instructions[currentExercise]);
+            setCurrentExercise((prevIndex) => prevIndex + 1);
+            setAction("exercise");
+        };
+
+        const handleRest = () => {
+            setTimeLeft(exerciseTime);
+            setCurrentExercise((prevIndex) => prevIndex + 1);
+            setCurrentDemo(exercises[currentExercise]);
+            setExerciseName(names[currentExercise]);
+            setExerciseInstructions(instructions[currentExercise]);
+            setAction("exercise");
+        };
 
         if (timeLeft > 0 && !isPaused) {
             const timer = setInterval(() => {
@@ -55,38 +88,15 @@ const WorkoutPage = ({ navigation, route, title}) => {
             return () => clearInterval(timer);
         } else if (timeLeft === 0) {
             if (action === "exercise") {
-                setTimeLeft(restTime);
-                setExerciseName(" ");
-                setExerciseInstructions(" ");
-                setCurrentDemo(Assets.rest);
-                setAction("rest");
-                if (currentExercise === exercises.length) {
-                    setAction("finished");
-                    setTimeLeft(0);
-                    setCurrentDemo(Assets.finish);
-                    setExerciseName(" ");
-                    setExerciseInstructions(" ");
-                    setProgress(prevProgress + 1);
-                    StorageService.saveStreak();
-                }
+                handleExercise();
             } else if (action === "ready") {
-                setTimeLeft(exerciseTime);
-                setCurrentExercise(0);
-                setCurrentDemo(exercises[currentExercise]);
-                setExerciseName(names[currentExercise]);
-                setExerciseInstructions(instructions[currentExercise]);
-                setCurrentExercise((prevIndex) => prevIndex + 1);
-                setAction("exercise");
+                handleReady();
             } else if (action === "rest") {
-                setTimeLeft(exerciseTime);
-                setCurrentExercise((prevIndex) => prevIndex + 1);
-                setCurrentDemo(exercises[currentExercise]);
-                setExerciseName(names[currentExercise]);
-                setExerciseInstructions(instructions[currentExercise]);
-                setAction("exercise");
+                handleRest();
             }
         }
     }, [timeLeft, isPaused, isLoaded]);
+
 
     useEffect(() => {
         StorageService.saveWorkoutProgress(workoutName, progress);
@@ -98,6 +108,8 @@ const WorkoutPage = ({ navigation, route, title}) => {
         const secs = seconds % 60;
         return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
     };
+    
+    
 
     return (
         <SafeAreaView style={styles.container}>

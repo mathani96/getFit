@@ -2,12 +2,25 @@ import { StyleSheet, Text, View, ScrollView , SafeAreaView} from 'react-native';
 import ExercisePreview from '../components/ExercisePreview';
 import CustomButton from '../components/CustomButton';
 import Assets from '../Assets';
+import { useState } from 'react';
+import RNPickerSelect from 'react-native-picker-select';
+
+const generateOptions = (min, max) => {
+    const options = [];
+    for (let i = min; i <= max; i += 5) {
+        options.push({ label: `${i} seconds`, value: i });
+    }
+    return options;
+};
 
 const WorkoutPreviewPage = ({ navigation, route}) => {
 
     const {workoutName} = route.params;
     const previews = Assets.previews[workoutName];
     const names = Assets.exerciseNames[workoutName];
+
+    const [exerciseTime, setExerciseTime] = useState(60);
+    const [restTime, setRestTime] = useState(30);
 
     console.log('workoutName:', workoutName);
     console.log('previews:', Assets.previews[workoutName]);
@@ -30,10 +43,30 @@ const WorkoutPreviewPage = ({ navigation, route}) => {
                 ))}
             </ScrollView>
 
+            <View style={styles.inputContainer}>
+                <View style={styles.inputBox}>
+                <Text style={styles.inputLabel}>Exercise Time</Text>
+                <RNPickerSelect
+                    onValueChange={(value) => setExerciseTime(value)}
+                    items={generateOptions(10, 180)}
+                    value={exerciseTime}
+                />
+                </View>
+
+                <View style={styles.inputBox}>
+                <Text style={styles.inputLabel}>Rest Time</Text>
+                <RNPickerSelect
+                    onValueChange={(value) => setRestTime(value)}
+                    items={generateOptions(5, 120)}
+                    value={restTime}
+                />
+                </View>
+            </View>
+
             <View style={styles.footer}>
             <CustomButton 
                 buttonName='Start'
-                onPress={() => navigation.navigate("Workout",workoutName)}
+                onPress={() => navigation.navigate("Workout",{workoutName, exerciseTime, restTime})}
             ></CustomButton>
             </View>
              
@@ -67,6 +100,29 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#000',
         textTransform: 'capitalize',
+    },
+    inputContainer: {
+        padding: 5,
+        borderWidth: 5,
+        borderColor: "#ffcc00",
+        borderRadius: 10,
+        width: '90%',
+        marginBottom: 10,
+        flexDirection: 'row',
+        alignItems: 'center', 
+        justifyContent: 'space-between',
+    },
+    inputLabel: {
+        textAlign: 'center',
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#333',
+        marginBottom: 5,
+    },
+    inputBox: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        width:"50%",
     },
     footer: {
         width:"100%",

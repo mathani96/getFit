@@ -46,7 +46,7 @@ const StorageService = {
             console.log("Previous streak :  ", previousStreak);
             let currentStreak = 1;
 
-            /*
+            
             if(lastWorkoutDate){
                 const timeDiff = currentdate - lastWorkoutDate;
                 const dateDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
@@ -63,9 +63,8 @@ const StorageService = {
 
             }
 
-            */
 
-            currentStreak = previousStreak + 1;
+            //currentStreak = previousStreak + 1;
             console.log("new streak :  ", currentStreak);
 
 

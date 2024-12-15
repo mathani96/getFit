@@ -19,7 +19,7 @@ const InstructionsPage = ({ navigation }) => {
         },
         {
             title: "Workout Previw",
-            text: "Tap on 'Workouts' to view the exercises that are included in the upcoming workout session. Press start and begin exercising!",
+            text: "Tap on 'Workouts' to view the exercises that are included in the upcoming workout session. Adjust the Exercise and Rest times to what suits you. Press start and begin exercising!",
         },
         {
             title: "Workout Page",

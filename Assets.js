@@ -24,40 +24,78 @@ const Assets = {
       legs: [
         require('./assets/previewImages/legsPreview/regular_squat.png'),
         require('./assets/previewImages/legsPreview/quad_squat.png'),
+        require('./assets/previewImages/legsPreview/glute_bridge.png'),
+        require('./assets/previewImages/legsPreview/lunge.png'),
+        require('./assets/previewImages/legsPreview/lunge.png'),
+        require('./assets/previewImages/legsPreview/calf_raise.png'),
+        require('./assets/previewImages/legsPreview/single_leg_deadlift.png'),
+        require('./assets/previewImages/legsPreview/single_leg_deadlift.png'),
       ],
       core: [
         require('./assets/previewImages/corePreview/situps_1.png'),
         require('./assets/previewImages/corePreview/leg_raises_1.png'),
+        require('./assets/previewImages/corePreview/knee_pull_ins_1.png'),
+        require('./assets/previewImages/corePreview/cross_legs.png'),
+        require('./assets/previewImages/corePreview/lying_side_leg_raise_1.png'),
+        require('./assets/previewImages/corePreview/russian_twist.png'),
+        require('./assets/previewImages/corePreview/plank.png'),
         
       ],
       cardio: [
         require('./assets/previewImages/fullBodyPreview/jumping_jack_2.png'),
         require('./assets/previewImages/fullBodyPreview/high_knees_2.png'),
+        require('./assets/previewImages/fullBodyPreview/left_jab.png'),
+        require('./assets/previewImages/fullBodyPreview/quad_stretch_right.png'),
+        require('./assets/previewImages/fullBodyPreview/burpee_2.png'),
+        require('./assets/previewImages/fullBodyPreview/criss_cross_crunch_3.png'),
+        require('./assets/previewImages/fullBodyPreview/regular_pushup_1.png'),
+        require('./assets/previewImages/fullBodyPreview/mountain_climbers.png'),
+        require('./assets/previewImages/fullBodyPreview/jumping-squat.png'),
       ],
     },
     
     exercises: {
+
       chest: [
         require('./assets/workouts/chest/push-up-regular.mp4'),
         require('./assets/workouts/chest/push-up-wide.mp4'),
-        require('./assets/workouts/chest/push-up-narrow.mp4')
+        require('./assets/workouts/chest/push-up-narrow.mp4'),
+        require('./assets/workouts/chest/dips.mp4'),
+        require('./assets/workouts/chest/push-up-decline.mp4'),
+        require('./assets/workouts/chest/push-up-incline.mp4'),
+        require('./assets/workouts/chest/shoulder-push-up.mp4'),
       ],
       legs: [
         require('./assets/workouts/legs/squat-glutes-hamstrings.mp4'),
         require('./assets/workouts/legs/squat-quads.mp4'),
+        require('./assets/workouts/legs/glute-bridge.mp4'),
+        require('./assets/workouts/legs/lunges-left.mp4'),
+        require('./assets/workouts/legs/lunges-right.mp4'),
+        require('./assets/workouts/legs/calf-raise.mp4'),
+        require('./assets/workouts/legs/single-leg-deadlift-left.mp4'),
+        require('./assets/workouts/legs/single-leg-deadlift-right.mp4'),
       ],
       core: [
         require('./assets/workouts/core/sit_ups.mp4'),
         require('./assets/workouts/core/leg_raises.mp4'),
-        
+        require('./assets/workouts/core/knee_pull_ins.mp4'),
+        require('./assets/workouts/core/cross_legs.mp4'),
+        require('./assets/workouts/core/oblique_side_leg_raise.mp4'),
+        require('./assets/workouts/core/russian_twist.mp4'),
+        require('./assets/workouts/core/plank.mp4'),
       ],
       cardio: [
         require('./assets/workouts/full-body/jumping-jacks.mp4'),
         require('./assets/workouts/full-body/high-knees.mp4'),
+        require('./assets/workouts/full-body/jabs.mp4'),
+        require('./assets/workouts/full-body/butt-kicks.mp4'),
+        require('./assets/workouts/full-body/burpees.mp4'),
+        require('./assets/workouts/full-body/criss-cross.mp4'),
+        require('./assets/workouts/full-body/push-up-regular.mp4'),
+        require('./assets/workouts/full-body/mountain-climbers.mp4'),
+        require('./assets/workouts/full-body/jumping-squat.mp4'),
       ],
     },
-
-
     
     exerciseNames: {
 
@@ -72,7 +110,7 @@ const Assets = {
       ],
       core: ['Sit-ups', 'Leg Raises', 'Knee Pull Ins',
               'Cross Legs', 'Oblique Side Leg Raise',
-              'Russian Twist',
+              'Russian Twist', 'Plank',
       ],
       cardio: ['Jumping Jacks', 'High-knees', 'Jabs',
                 'Butt-kicks', 'Burpees', 'Criss-cross',
@@ -110,6 +148,7 @@ const Assets = {
         'Sit on the floor with your legs extended. Cross one leg over the other and alternate while engaging your core.',
         'Lie on your right side with your legs straight. Lift your top leg toward the ceiling, then lower it back down, repeat repeat on other side.',
         'Sit on the floor with your knees bent and feet lifted. Twist your torso from side to side while holding your hands together.',
+        'Keep your body straight, and engage your core.'
       ],
     
       cardio: [

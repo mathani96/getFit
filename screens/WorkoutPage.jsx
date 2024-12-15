@@ -6,7 +6,7 @@ import Assets from '../Assets';
 import StorageService from "../services/StorageService";
 import ProgressBar from "../components/ProgressBar";
 
-const WorkoutPage = ({ navigation, route, title}) => {
+const WorkoutPage = ({ navigation, route}) => {
     const {workoutName, exerciseTime, restTime} = route.params;
  
     const [timeLeft, setTimeLeft] = useState(5);
@@ -28,7 +28,6 @@ const WorkoutPage = ({ navigation, route, title}) => {
         const loadProgress = async () => {
            const savedProgress = await StorageService.loadWorkoutProgress(workoutName);
            setPrevProgress(savedProgress || 0);
-           console.log('Loaded saved WorkoutProgress : ', savedProgress);
         };
 
         loadProgress();
@@ -39,47 +38,11 @@ const WorkoutPage = ({ navigation, route, title}) => {
         };
     }, []);
 
+  
     useEffect(() => {
-        if (!isLoaded) {
-            return;
-        }
-
-        const handleExercise = () => {
-            setTimeLeft(restTime);
-            setExerciseName(" ");
-            setExerciseInstructions(" ");
-            setCurrentDemo(Assets.rest);
-            setAction("rest");
-
-            if (currentExercise === exercises.length) {
-                setAction("finished");
-                setTimeLeft(0);
-                setCurrentDemo(Assets.finish);
-                setExerciseName(" ");
-                setExerciseInstructions(" ");
-                setProgress(prevProgress + 1);
-                StorageService.saveStreak();
-            }
-        };
-
-        const handleReady = () => {
-            setTimeLeft(exerciseTime);
-            setCurrentExercise(0);
-            setCurrentDemo(exercises[currentExercise]);
-            setExerciseName(names[currentExercise]);
-            setExerciseInstructions(instructions[currentExercise]);
-            setCurrentExercise((prevIndex) => prevIndex + 1);
-            setAction("exercise");
-        };
-
-        const handleRest = () => {
-            setTimeLeft(exerciseTime);
-            setCurrentExercise((prevIndex) => prevIndex + 1);
-            setCurrentDemo(exercises[currentExercise]);
-            setExerciseName(names[currentExercise]);
-            setExerciseInstructions(instructions[currentExercise]);
-            setAction("exercise");
-        };
+        if (!isLoaded){
+            return; 
+        } 
 
         if (timeLeft > 0 && !isPaused) {
             const timer = setInterval(() => {
@@ -88,19 +51,43 @@ const WorkoutPage = ({ navigation, route, title}) => {
             return () => clearInterval(timer);
         } else if (timeLeft === 0) {
             if (action === "exercise") {
-                handleExercise();
+                setTimeLeft(restTime);
+                setExerciseName(" ");
+                setExerciseInstructions(" ");
+                setCurrentDemo(Assets.rest);
+                setAction("rest");
+                if (currentExercise === exercises.length) {
+                    setAction("finished");
+                    setTimeLeft(0);
+                    setCurrentDemo(Assets.finish);
+                    setExerciseName(" ");
+                    setExerciseInstructions(" ");
+                    setProgress(prevProgress + 1);
+                    StorageService.saveStreak();
+                }
             } else if (action === "ready") {
-                handleReady();
+                setTimeLeft(exerciseTime);
+                setCurrentExercise(0);
+                setCurrentDemo(exercises[currentExercise]);
+                setExerciseName(names[currentExercise]);
+                setExerciseInstructions(instructions[currentExercise]);
+                setCurrentExercise((prevIndex) => prevIndex + 1);
+                setAction("exercise");
             } else if (action === "rest") {
-                handleRest();
+                setTimeLeft(exerciseTime);
+                setCurrentExercise((prevIndex) => prevIndex + 1);
+                setCurrentDemo(exercises[currentExercise]);
+                setExerciseName(names[currentExercise]);
+                setExerciseInstructions(instructions[currentExercise]);
+                setAction("exercise");
             }
         }
     }, [timeLeft, isPaused, isLoaded]);
 
-
     useEffect(() => {
-        StorageService.saveWorkoutProgress(workoutName, progress);
-        console.log('New progress saved: ', progress);
+        if(action === 'finished'){
+            StorageService.saveWorkoutProgress(workoutName, progress);
+        }
     }, [progress]);    
     
     const formatTime = (seconds) => {

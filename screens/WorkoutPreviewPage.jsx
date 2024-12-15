@@ -22,8 +22,6 @@ const WorkoutPreviewPage = ({ navigation, route}) => {
     const [exerciseTime, setExerciseTime] = useState(60);
     const [restTime, setRestTime] = useState(30);
 
-    console.log('workoutName:', workoutName);
-    console.log('previews:', Assets.previews[workoutName]);
 
 
     return (

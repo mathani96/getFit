@@ -24,7 +24,6 @@ const StorageService = {
         
         try {
            const currentProgress = await AsyncStorage.getItem(key);
-           console.log("progress for ", key, " is ", currentProgress);
 
            return currentProgress ? parseInt(currentProgress, 10) : 0;
         }catch (error){
@@ -37,13 +36,10 @@ const StorageService = {
         try {
 
             const currentdate = new Date();
-            console.log("date captured : ", currentdate);
             const lastWorkoutDateData = await AsyncStorage.getItem("lastWorkoutDate");
             const lastWorkoutDate = lastWorkoutDateData ? new Date(JSON.parse(lastWorkoutDateData)) : null;
             const previousStreakData = await AsyncStorage.getItem("currentStreak");
             const previousStreak = previousStreakData ? parseInt(previousStreakData, 10) : 0;
-            console.log("last Workout date from storage", lastWorkoutDate);
-            console.log("Previous streak :  ", previousStreak);
             let currentStreak = 1;
 
             
@@ -62,10 +58,6 @@ const StorageService = {
                 }
 
             }
-
-
-            //currentStreak = previousStreak + 1;
-            console.log("new streak :  ", currentStreak);
 
 
             await AsyncStorage.setItem("lastWorkoutDate", JSON.stringify(currentdate));

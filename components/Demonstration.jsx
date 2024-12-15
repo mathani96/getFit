@@ -11,7 +11,6 @@ const Demonstration= ({exercisePath }) => {
         player.loop = true;
       });
 
-      // Start playing the video on mount
         useEffect(() => {
             player.play();
         }, [player]);

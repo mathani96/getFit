@@ -1,11 +1,11 @@
 import React from 'react';
 import {Image, Text, TouchableOpacity, StyleSheet, View } from 'react-native';
-import WorkoutImages from '../WorkoutImages';
+import Assets from '../Assets';
 
 const WorkoutButton = ({ title, onPress, workoutName }) => {
 
     const getImageSource = (workoutName) => {
-        const imageSource = WorkoutImages.workoutCategories[workoutName];
+        const imageSource = Assets.workoutCategories[workoutName];
         if (imageSource) {
           return imageSource;
         } else {

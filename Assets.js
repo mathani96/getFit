@@ -1,4 +1,4 @@
-const WorkoutImages = {
+const Assets = {
   
   rest: require('./assets/rest.mp4'),
   ready: require('./assets/ready.mp4'),
@@ -127,4 +127,4 @@ const WorkoutImages = {
     
 
 };
-export default WorkoutImages;
+export default Assets;

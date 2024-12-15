@@ -7,7 +7,7 @@ const HomePage = ({navigation}) => {
     return (
             <SafeAreaView style={styles.container}>
                 <View>
-                <Text style={styles.welcomeTitle}>Welcome to GetFit</Text>
+                <Text style={styles.welcomeTitle}>GetFit Home</Text>
                 </View>
                 <View>
                 <Text style={styles.title}>Motivational Quote of the Day 💪</Text>
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     },
     welcomeTitle:{
         textAlign: "center",
-        fontSize: 20,
+        fontSize: 30,
         fontWeight: "bold",
         color: "#000",
         padding: 15,

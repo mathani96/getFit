@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Text, View, SafeAreaView, StyleSheet } from "react-native";
 import CustomButton from "../components/CustomButton";
 import Demonstration from "../components/Demonstration";
-import WorkoutImages from '../WorkoutImages';
+import Assets from '../Assets';
 import StorageService from "../services/StorageService";
 import ProgressBar from "../components/ProgressBar";
 
@@ -16,16 +16,16 @@ const WorkoutPage = ({ navigation, route, title}) => {
     const [isPaused, setIsPaused] = useState(false);
     const [currentExercise, setCurrentExercise] = useState(0);
     const [action, setAction] = useState("ready");
-    const [currentDemo, setCurrentDemo] = useState(WorkoutImages.ready);
+    const [currentDemo, setCurrentDemo] = useState(Assets.ready);
     const [progress, setProgress] = useState(0);
     const [prevProgress, setPrevProgress] = useState(0);
     const [isLoaded, setIsLoaded] = useState(false);
     const [exerciseName, setExerciseName] = useState(" ");
     const [exerciseInstructions, setExerciseInstructions] = useState(" ");
 
-    const exercises = WorkoutImages.exercises[workoutName];
-    const names = WorkoutImages.exerciseNames[workoutName];
-    const instructions = WorkoutImages.exerciseInstructions[workoutName];
+    const exercises = Assets.exercises[workoutName];
+    const names = Assets.exerciseNames[workoutName];
+    const instructions = Assets.exerciseInstructions[workoutName];
 
     useEffect(() => {
         const loadProgress = async () => {
@@ -58,12 +58,12 @@ const WorkoutPage = ({ navigation, route, title}) => {
                 setTimeLeft(restTime);
                 setExerciseName(" ");
                 setExerciseInstructions(" ");
-                setCurrentDemo(WorkoutImages.rest);
+                setCurrentDemo(Assets.rest);
                 setAction("rest");
                 if (currentExercise === exercises.length) {
                     setAction("finished");
                     setTimeLeft(0);
-                    setCurrentDemo(WorkoutImages.finish);
+                    setCurrentDemo(Assets.finish);
                     setExerciseName(" ");
                     setExerciseInstructions(" ");
                     setProgress(prevProgress + 1);

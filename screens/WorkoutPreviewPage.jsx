@@ -1,16 +1,16 @@
 import { StyleSheet, Text, View, ScrollView , SafeAreaView} from 'react-native';
 import ExercisePreview from '../components/ExercisePreview';
 import CustomButton from '../components/CustomButton';
-import WorkoutImages from '../WorkoutImages';
+import Assets from '../Assets';
 
 const WorkoutPreviewPage = ({ navigation, route}) => {
 
     const {workoutName} = route.params;
-    const previews = WorkoutImages.previews[workoutName];
-    const names = WorkoutImages.exerciseNames[workoutName];
+    const previews = Assets.previews[workoutName];
+    const names = Assets.exerciseNames[workoutName];
 
     console.log('workoutName:', workoutName);
-    console.log('previews:', WorkoutImages.previews[workoutName]);
+    console.log('previews:', Assets.previews[workoutName]);
 
 
     return (

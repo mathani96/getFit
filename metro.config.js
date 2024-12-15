@@ -1,6 +1,11 @@
 const { getDefaultConfig } = require("expo/metro-config");
-const { withNativeWind } = require('nativewind/metro');
 
-const config = getDefaultConfig(__dirname)
+const config = getDefaultConfig(__dirname);
 
-module.exports = withNativeWind(config, { input: './global.css' })
+// Extend the asset extensions to include .mp4
+config.resolver.assetExts = [
+  ...config.resolver.assetExts, 
+  "mp4"
+];
+
+module.exports = config;

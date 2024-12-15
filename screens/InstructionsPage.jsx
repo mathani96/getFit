@@ -30,8 +30,8 @@ const InstructionsPage = ({ navigation }) => {
             text: "Tap on 'Progress' to view your streaks and a breakdown of your workouts.",
         },
         {
-            title: "Walkthrough",
-            text: "Tap on 'Walkthrough' for help with using the app and its features.",
+            title: "Instructions",
+            text: "Tap on 'Instructions' for help with using the app and its features.",
         },
     ];
 

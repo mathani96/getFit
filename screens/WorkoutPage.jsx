@@ -124,7 +124,7 @@ const WorkoutPage = ({ navigation, route}) => {
             <View style={styles.footer}>
 
                 <View style={styles.buttonPosQuit}>
-                    <CustomButton buttonName="Quit workout" onPress={() => navigation.navigate('Home')} />
+                    <CustomButton buttonName="Leave" onPress={() => navigation.navigate('Home')} />
                 </View>
 
 
